@@ -2,17 +2,22 @@ import os
 #inserir 2 restaurantes na list
 restaurantes=['Bife Sujo', 'Saco de Feijão'] 
 
-def finalizar_app():
+def mostrar_subtitulo(texto):
     os.system('cls')
-    print ('Finalizando app\n')
+    print(texto)
+    print()
+
+def finalizar_app():
+    #os.system('cls')
+    #print ('texto')
+    mostrar_subtitulo('Finalizando o app')
 
 def chamar_name_do_app():
      print ('Restaurante Expresso\n') 
 
 def opcao_invalida():
     print('Opção invalida\n')
-    input('Digite uma tecla para voltar ao menu principal: ')
-    main() 
+    voltar_ao_menu_principal()
 
 def exibir_opcoes():
     print('1-Cadastrar um restaurante')
@@ -20,14 +25,18 @@ def exibir_opcoes():
     print('3-Ativar um restaurante')
     print('4-Sair do programa') 
 
+def voltar_ao_menu_principal():
+    input("\n Digite uma tecla para voltar ao menu principal: \n")
+    main()
+
 
 def cadastrar_novo_restaurante():
      os.system('cls')
      nome_do_restaurante=input('Digite o nome do novo restaurante: \n')
      restaurantes.append(nome_do_restaurante)
      print(f'O restaurante {nome_do_restaurante}, foi cadastrado com sucesso\n')
-     input("Digite uma tecla para voltar ao menu principal: \n")
-     main()
+     voltar_ao_menu_principal()
+
 def listar_restaurantes():
     os. system('cls')
     print('Listando os restaurantes \n')
@@ -35,8 +44,9 @@ def listar_restaurantes():
     for restaurante in restaurantes:
         print(f'-{restaurante}')
     #chamar duas funções de saída
-    input("\n Digite uma tecla para voltar ao menu principal: \n")
-    main()
+    #input("\n Digite uma tecla para voltar ao menu principal: \n")
+    #main()
+    voltar_ao_menu_principal()
 
 def escolher_opcoes(): 
     try:
@@ -46,7 +56,7 @@ def escolher_opcoes():
             print('Você escolheu cadastrar um restaurante\n')
             cadastrar_novo_restaurante()
         elif (opcao_digitada==2):
-            # print('Você escolheu listar os restaurantes do app\n')
+            print('Você escolheu listar os restaurantes do app\n')
             listar_restaurantes()
         elif (opcao_digitada==3):
             print('Você escolheu ativar um restaurante\n')
