@@ -1,33 +1,42 @@
+
 import os 
 #inserir 2 restaurantes na list
-restaurantes=['Bife Sujo', 'Saco de Feijão'] 
+# restaurantes=['Bife Sujo', 'Saco de Feijão'] 
+restaurantes=[{'nome':'Bife Sujo','categoria':'prato-feito','ativo':True},
+              {'nome':'Saco de Feijão','categoria':'feijoada', 'ativo':False},
+              {'nome':'Pé de Banha','categoria':'pastelaria','ativo':True}]
 
-def mostrar_subtitulo(texto):
+
+def mostrar_subtitulo():
     os.system('cls')
-    print(texto)
+    print ('texto')
     print()
-
+    
 def finalizar_app():
-    #os.system('cls')
-    #print ('texto')
+    # os.system('cls')
+    # print ('Finalizando app\n')
     mostrar_subtitulo('Finalizando o app')
 
-def chamar_name_do_app():
-     print ('Restaurante Expresso\n') 
+
+
+def chamar_nome_do_app():
+     print ('''𝓻𝓮𝓼𝓽𝓪𝓾𝓻𝓪𝓷𝓽𝓮 𝓮𝔁𝓹𝓻𝓮𝓼𝓼𝓸''') 
 
 def opcao_invalida():
     print('Opção invalida\n')
+    # input('Digite uma tecla para voltar ao menu principal: ')
+    # main() 
     voltar_ao_menu_principal()
 
 def exibir_opcoes():
     print('1-Cadastrar um restaurante')
     print('2-Listar restaurantes')
     print('3-Ativar um restaurante')
-    print('4-Sair do programa') 
+    print('4-Sair do programa')
 
 def voltar_ao_menu_principal():
-    input("\n Digite uma tecla para voltar ao menu principal: \n")
-    main()
+     input("\n Digite uma tecla para voltar ao menu principal: \n")
+     main() 
 
 
 def cadastrar_novo_restaurante():
@@ -42,11 +51,15 @@ def listar_restaurantes():
     print('Listando os restaurantes \n')
     #em português
     for restaurante in restaurantes:
-        print(f'-{restaurante}')
-    #chamar duas funções de saída
-    #input("\n Digite uma tecla para voltar ao menu principal: \n")
-    #main()
-    voltar_ao_menu_principal()
+        # print(f'-{restaurante}')
+    #modificando a maneira de listar restaurante
+    #para manipular o dicionário
+        nome_res=restaurante['nome']
+        categoria=restaurante['categoria']
+        print(f'-{nome_res} |- {categoria}')
+        voltar_ao_menu_principal()
+
+
 
 def escolher_opcoes(): 
     try:
@@ -56,7 +69,7 @@ def escolher_opcoes():
             print('Você escolheu cadastrar um restaurante\n')
             cadastrar_novo_restaurante()
         elif (opcao_digitada==2):
-            print('Você escolheu listar os restaurantes do app\n')
+            # print('Você escolheu listar os restaurantes do app\n')
             listar_restaurantes()
         elif (opcao_digitada==3):
             print('Você escolheu ativar um restaurante\n')
@@ -71,11 +84,12 @@ def escolher_opcoes():
 def main():
     os.system('cls') 
 
-    chamar_name_do_app() 
+    chamar_nome_do_app() 
 
     exibir_opcoes() 
 
     escolher_opcoes() 
+
 
 if(__name__=='__main__'):
     main()
