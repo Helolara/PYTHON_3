@@ -10,8 +10,11 @@ restaurantes=[{'nome':'Bife-sujo','categoria':'prato-feito','ativo': True},
 
 def mostrar_subtitulo(texto):
     os.system('cls')
-    print (texto)
-    print()
+    linha='*'*(len(texto))
+    print(linha)
+    print(texto)
+    print(linha)
+    print() 
 
 #2 declarando a função finalizar_app
 def finalizar_app():
@@ -54,13 +57,12 @@ def cadatrar_novo_restaurante():
 
 def listar_restaurantes():
     mostrar_subtitulo('Listando os restaurantes')
+    print(f'Nome do restaurante'.ljust(24),'categoria'.ljust(23),'ativo')
     for restaurante in restaurantes:
-       # print(f'- {restaurantes}')
-       #modificando a maneira de listar dicionario
        nome_restaurante=restaurante['nome']
        categoria=restaurante['categoria']
-       ativo=restaurante ['ativo']
-       print(f'-{nome_restaurante} | -{categoria} | -{ativo}')
+       ativo='Ativado'if restaurante ['ativo'] else 'Desativado'
+       print(f'-{nome_restaurante.ljust(20)} | -{categoria.ljust(20)} | -{ativo}')
     #chamar a duas funções e saída
     voltar_ao_menu_principal()
 
